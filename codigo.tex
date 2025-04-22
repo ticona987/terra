@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{\vspace{-2cm}Teorema de Pitágoras}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\large \textbf{Helen Ticona Ilaquita}
+\end{center}
+
+\vspace{0.4cm}
+
+\section*{1. Enunciado}
+
+El \textbf{Teorema de Pitágoras} establece que, en todo triángulo rectángulo, el cuadrado de la hipotenusa es igual a la suma de los cuadrados de los catetos:
+
+\[
+c^2 = a^2 + b^2
+\]
+
+donde:
+\begin{itemize}
+    \item \(a\) y \(b\) son los catetos,
+    \item \(c\) es la hipotenusa (el lado opuesto al ángulo recto).
+\end{itemize}
+
+\section*{2. Demostración intuitiva (visual)}
+
+Supongamos un triángulo rectángulo con lados \(a\), \(b\) y \(c\). Si construimos un cuadrado sobre cada lado, la suma de las áreas de los cuadrados sobre \(a\) y \(b\) será igual al área del cuadrado sobre \(c\). Este resultado se puede demostrar por superposición de áreas o mediante álgebra básica.
+
+\section*{3. Ejemplos numéricos}
+
+\begin{itemize}
+    \item \textbf{Ejemplo 1:} \(a = 3\), \(b = 4\): \quad \(c^2 = 9 + 16 = 25 \Rightarrow c = 5\)
+    \item \textbf{Ejemplo 2:} \(a = 5\), \(b = 12\): \quad \(c^2 = 25 + 144 = 169 \Rightarrow c = 13\)
+    \item \textbf{Ejemplo 3:} \(a = 6\), \(b = 8\): \quad \(c^2 = 36 + 64 = 100 \Rightarrow c = 10\)
+    \item \textbf{Ejemplo 4 (con raíz):} \(a = 1\), \(b = 1\): \quad \(c^2 = 1 + 1 = 2 \Rightarrow c = \sqrt{2} \approx 1.41\)
+\end{itemize}
+
+\section*{4. Aplicaciones del teorema}
+
+Este teorema es ampliamente utilizado en diversas áreas:
+
+\begin{itemize}
+    \item \textbf{Arquitectura y construcción:} Para calcular diagonales y asegurarse de que los ángulos sean rectos.
+    \item \textbf{Navegación y GPS:} Para calcular distancias directas entre dos puntos.
+    \item \textbf{Física:} En vectores, trayectorias y movimiento en dos dimensiones.
+\end{itemize}
+
+\section*{5. Gráfico explicativo}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  % Triángulo
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (4,0);
+  \coordinate (C) at (0,3);
+  \draw[thick] (A) -- (B) -- (C) -- cycle;
+
+  % Cuadrado sobre AB
+  \draw[fill=blue!20,opacity=0.6] (A) -- ++(0,-4) -- ++(4,0) -- ++(0,4) -- cycle;
+  % Cuadrado sobre AC
+  \draw[fill=green!20,opacity=0.6] (A) -- ++(-3,0) -- ++(0,3) -- ++(3,0) -- cycle;
+  % Cuadrado sobre hipotenusa
+  \path (B) -- (C) coordinate[pos=0.5] (M);
+  \path let \p1 = ($(C)-(B)$) in 
+    coordinate (u) at (\x1,\y1)
+    coordinate (v) at (-\y1,\x1);
+  \draw[fill=red!20,opacity=0.6] 
+    (B) -- ++(v) -- ++($(C)-(B)$) -- ++($(-1,0)*v$) -- cycle;
+
+  % Ángulo recto
+  \draw (0.4,0) -- (0.4,0.4) -- (0,0.4);
+
+  % Etiquetas
+  \node at (2,-0.4) {$a$};
+  \node at (-0.4,1.5) {$b$};
+  \node at (2.1,1.6) {$c$};
+
+  % Nombre
+  \node at (2,-4.5);
+\end{tikzpicture}
+\end{center}
+
+\section*{6. Ejercicio propuesto}
+
+Resuelve el siguiente problema utilizando el Teorema de Pitágoras:
+
+\textbf{Un árbol proyecta una sombra de 6 metros. Si la distancia desde la punta de la sombra hasta la parte superior del árbol es de 10 metros,} ¿cuánto mide el árbol?
+
+\vspace{0.2cm}
+\noindent
+\textit{Sugerencia: Usa el triángulo rectángulo formado por el árbol, la sombra y la línea diagonal de 10 m.}
+
+---
+
+\noindent
+\textbf{Respuesta esperada:}
+\[
+a^2 + 6^2 = 10^2 \Rightarrow a^2 + 36 = 100 \Rightarrow a^2 = 64 \Rightarrow a = 8\text{ m}
+\]
+
+\end{document}
